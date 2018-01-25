@@ -5,10 +5,25 @@
     </head>
     <body>
 
-    <button class="btn btn-success">Test Button</button>
-
-    <div ng-controller="TestController">
-        {{message}}
+    <div ng-controller="CountryList as ctry">
+        Loading Status {{ctry.status}}
+        <div ng-if="ctry.error" class="alert alert-danger" role="alert">{{ctry.error}}</div>
+        <table class="table table-bordered table-hover table-striped">
+            <thead><tr>
+                <td>S.No</td>
+                <td>Name</td>
+                <td>Capital</td>
+                <td>Population</td>
+            </tr></thead>
+            <tbody>
+                <tr ng-repeat="c in ctry.countries">
+                    <td>{{$index + 1}}</td>
+                    <td>{{c.name}}</td>
+                    <td>{{c.capital}}</td>
+                    <td>{{c.population}}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 
